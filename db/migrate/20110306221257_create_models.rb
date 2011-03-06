@@ -11,6 +11,19 @@ class CreateModels < ActiveRecord::Migration
       
       t.string :city, :null => false
     end
+
+    create_table :interests do |t|
+      t.string :name, :null => false
+    end
+
+    ["Door Knocking", "Presenting", "Admin"].each do |x|
+      Interest.create!(:name => x)
+    end
+
+    create_table :interest_users do |t|
+      t.references :user
+      t.references :interest
+    end
   end
 
   def self.down

@@ -23,6 +23,15 @@
     </div>
   <% end %>
 
+  <%= f.fields_for :interest_users do |ff| %>
+    <div>
+    <%= ff.hidden_field :id %>
+    <%= ff.hidden_field :interest_id %>
+    <%= ff.check_box :_destroy, {:checked => ff.object.persisted?}, '0', '1' %>
+    <%= ff.label :_destroy, ff.object.interest.name %>
+    </div>
+  <% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>
