@@ -25,11 +25,24 @@
 
   <%= f.fields_for :interest_users do |ff| %>
     <div>
-    <%= ff.hidden_field :id %>
     <%= ff.hidden_field :interest_id %>
     <%= ff.check_box :_destroy, {:checked => ff.object.persisted?}, '0', '1' %>
     <%= ff.label :_destroy, ff.object.interest.name %>
     </div>
+  <% end %>
+
+  <h2>Tasks</h2>
+  <%= f.fields_for :tasks do |ff| %>
+    <div>
+      <%= ff.label :name %>
+      <%= ff.text_field :name %>
+
+      <% if ff.object.persisted? %>
+        <%= ff.check_box :_destroy %>
+        <%= ff.label :_destroy, "Destroy" %>
+      <% end %>
+    </div>
+
   <% end %>
 
   <div class="actions">

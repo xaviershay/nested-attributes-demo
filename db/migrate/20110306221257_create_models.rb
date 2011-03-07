@@ -24,6 +24,12 @@ class CreateModels < ActiveRecord::Migration
       t.references :user
       t.references :interest
     end
+
+    create_table :tasks do |t|
+      t.references :user
+
+      t.string :name, :null => false
+    end
   end
 
   def self.down

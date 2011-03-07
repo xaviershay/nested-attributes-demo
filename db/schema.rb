@@ -26,6 +26,11 @@ ActiveRecord::Schema.define(:version => 20110306221257) do
     t.string "name", :null => false
   end
 
+  create_table "tasks", :force => true do |t|
+    t.integer "user_id"
+    t.string  "name",    :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "email",      :null => false
     t.datetime "created_at"
